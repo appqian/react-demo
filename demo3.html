@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react入门</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    
+<div id="example"></div>
+    <script type="text/babel">
+        var ClickButton = React.createClass({
+            handleClick:function(event){
+                var tipE = ReactDOM.findDOMNode(this.refs.tip);
+                if(tipE.style.display === 'none'){
+                    tipE.style.display = 'inline';
+                }else{
+                    tipE.style.display = 'none';
+                }
+                event.stopPropagation();
+                event.preventDefault();
+            },
+            render:function(){
+                return(
+                    <div>
+                        <button onClick = {this.handleClick}>点击我显示隐藏/显示</button><span ref="tip">132</span>
+                    </div> 
+                )
+            }
+        });
+        var Con = React.createClass({
+            render:function(){
+                return(
+                    <span >h哈</span>
+                )
+            }
+        });
+        ReactDOM.render(<div><ClickButton/><Con/></div>, document.getElementById('example'));
+    </script>
+</body>
+</html>
